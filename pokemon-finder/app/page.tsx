@@ -2,17 +2,17 @@ import { PokemonGrid } from "@/components/pokemon-grid";
 import { PokemonCard } from "@/components/pokemon-card";
 import Image from "next/image";
 import React from "react";
+import { getPokemonList } from "@/lib/pokemonAPI";
 
-export default function Home() {
+export default async function Home() {
   // load in data
+  const pokemonList = await getPokemonList();
 
   // text input that filters content
 
   return (
     <>
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <PokemonGrid />
-      </div>
+        <PokemonGrid pokemonList={pokemonList} />
     </>
   );
 }
